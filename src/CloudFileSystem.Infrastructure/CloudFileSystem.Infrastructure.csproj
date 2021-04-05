@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.13" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.13" />
+    <PackageReference Include="MimeTypeMapOfficial" Version="1.0.15" />
+    <PackageReference Include="SharpZipLib" Version="1.3.1" />
+    <PackageReference Include="Azure.Storage.Files.Shares" Version="12.6.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CloudFileSystem.Core\CloudFileSystem.Core.csproj" />
+    <ProjectReference Include="..\CloudFileSystem.Domain\CloudFileSystem.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
