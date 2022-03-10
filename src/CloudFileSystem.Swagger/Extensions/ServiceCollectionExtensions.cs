@@ -3,27 +3,26 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
-namespace CloudFileSystem.Swagger.Extensions
+namespace CloudFileSystem.Swagger.Extensions;
+
+/// <summary>
+/// Swagger extensions for <see cref="IServiceCollection" />
+/// </summary>
+public static class ServiceCollectionExtensions
 {
     /// <summary>
-    /// Swagger extensions for <see cref="IServiceCollection"/>
+    /// Adds the swagger documentation.
     /// </summary>
-    public static class ServiceCollectionExtensions
+    /// <param name="services">The services.</param>
+    /// <returns></returns>
+    public static IServiceCollection AddSwaggerDocumentation(this IServiceCollection services)
     {
-        /// <summary>
-        /// Adds the swagger documentation.
-        /// </summary>
-        /// <param name="services">The services.</param>
-        /// <returns></returns>
-        public static IServiceCollection AddSwaggerDocumentation(this IServiceCollection services)
-        {
-            return services
-                .AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>()
-                .AddSwaggerGen(options => 
-                {
-                    options.OperationFilter<SwaggerDefaultValues>();
-                })
-                .AddSwaggerGenNewtonsoftSupport();
-        }
+        return services
+            .AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>()
+            .AddSwaggerGen(options =>
+            {
+                options.OperationFilter<SwaggerDefaultValues>();
+            })
+            .AddSwaggerGenNewtonsoftSupport();
     }
 }

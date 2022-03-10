@@ -1,15 +1,14 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
-    <Authors>HunteRoi</Authors>
-    <Product>Cloud FileSystem</Product>
-    <RepositoryUrl>https://github.com/hunteroi/cloud-filesystem</RepositoryUrl>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -17,6 +16,5 @@
     <ProjectReference Include="..\CloudFileSystem.Core\CloudFileSystem.Core.csproj" />
     <ProjectReference Include="..\CloudFileSystem.Infrastructure\CloudFileSystem.Infrastructure.csproj" />
   </ItemGroup>
-
 
 </Project>
