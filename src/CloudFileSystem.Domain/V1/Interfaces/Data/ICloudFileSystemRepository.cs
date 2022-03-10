@@ -1,55 +1,51 @@
 ﻿using CloudFileSystem.Domain.V1.Aggregates.DocumentAggregate;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
-namespace CloudFileSystem.Domain.V1.Interfaces.Data
+namespace CloudFileSystem.Domain.V1.Interfaces.Data;
+
+/// <summary>
+/// The repository interface
+/// </summary>
+public interface ICloudFileSystemRepository
 {
     /// <summary>
-    /// The repository interface
+    /// Creates the document asynchronous.
     /// </summary>
-    public interface ICloudFileSystemRepository
-    {
-        /// <summary>
-        /// Gets the document asynchronous.
-        /// </summary>
-        /// <param name="id">The identifier.</param>
-        /// <returns></returns>
-        Task<Document> GetDocumentAsync(Guid id);
+    /// <param name="document">The document.</param>
+    /// <returns></returns>
+    Task<Guid> CreateDocumentAsync(Document document);
 
-        /// <summary>
-        /// Gets the documents asynchronous.
-        /// </summary>
-        /// <param name="parentId">The parent identifier.</param>
-        /// <returns></returns>
-        Task<IEnumerable<Document>> GetDocumentsAsync(Guid? parentId = null);
+    /// <summary>
+    /// Deletes the document asynchronous.
+    /// </summary>
+    /// <param name="id">The identifier.</param>
+    /// <returns></returns>
+    Task DeleteDocumentAsync(Guid id);
 
-        /// <summary>
-        /// Gets the documents asynchronous.
-        /// </summary>
-        /// <param name="ids">The ids.</param>
-        /// <returns></returns>
-        Task<IEnumerable<Document>> GetDocumentsAsync(IEnumerable<Guid> ids);
+    /// <summary>
+    /// Gets the document asynchronous.
+    /// </summary>
+    /// <param name="id">The identifier.</param>
+    /// <returns></returns>
+    Task<Document> GetDocumentAsync(Guid id);
 
-        /// <summary>
-        /// Creates the document asynchronous.
-        /// </summary>
-        /// <param name="document">The document.</param>
-        /// <returns></returns>
-        Task<Guid> CreateDocumentAsync(Document document);
+    /// <summary>
+    /// Gets the documents asynchronous.
+    /// </summary>
+    /// <param name="parentId">The parent identifier.</param>
+    /// <returns></returns>
+    Task<IEnumerable<Document>> GetDocumentsAsync(Guid? parentId = null);
 
-        /// <summary>
-        /// Updates the document asynchronous.
-        /// </summary>
-        /// <param name="document">The document.</param>
-        /// <returns></returns>
-        Task<Guid> UpdateDocumentAsync(Document document);
+    /// <summary>
+    /// Gets the documents asynchronous.
+    /// </summary>
+    /// <param name="ids">The ids.</param>
+    /// <returns></returns>
+    Task<IEnumerable<Document>> GetDocumentsAsync(IEnumerable<Guid> ids);
 
-        /// <summary>
-        /// Deletes the document asynchronous.
-        /// </summary>
-        /// <param name="id">The identifier.</param>
-        /// <returns></returns>
-        Task DeleteDocumentAsync(Guid id);
-    }
+    /// <summary>
+    /// Updates the document asynchronous.
+    /// </summary>
+    /// <param name="document">The document.</param>
+    /// <returns></returns>
+    Task<Guid> UpdateDocumentAsync(Document document);
 }

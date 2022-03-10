@@ -2,114 +2,109 @@
 using CloudFileSystem.Core.V1.Data.Interfaces;
 using CloudFileSystem.Core.V1.Exceptions;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Threading.Tasks;
 
-namespace CloudFileSystem.Core.V1.Data.Repositories
+namespace CloudFileSystem.Core.V1.Data.Repositories;
+
+/// <summary>
+/// Main repository class.
+/// </summary>
+/// <seealso cref="CloudFileSystem.Core.V1.Data.Interfaces.IRepository" />
+public class Repository : IRepository
 {
     /// <summary>
-    /// Main repository class.
+    /// The base context
     /// </summary>
-    /// <seealso cref="CloudFileSystem.Core.V1.Data.Interfaces.IRepository" />
-    public class Repository : IRepository
+    protected readonly DbContext baseContext;
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Repository" /> class.
+    /// </summary>
+    /// <param name="context">The context.</param>
+    /// <exception cref="System.ArgumentNullException">context</exception>
+    public Repository(DbContext context)
     {
-        /// <summary>
-        /// The base context
-        /// </summary>
-        protected readonly DbContext baseContext;
+        this.baseContext = context ?? throw new ArgumentNullException(nameof(context));
+    }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Repository"/> class.
-        /// </summary>
-        /// <param name="context">The context.</param>
-        /// <exception cref="System.ArgumentNullException">context</exception>
-        public Repository(DbContext context)
+    /// <inheritdoc />
+    public async Task<Guid> CreateEntityAsync<T>(T entity) where T : Entity
+    {
+        try
         {
-            this.baseContext = context ?? throw new ArgumentNullException(nameof(context));
+            await this.baseContext.Set<T>().AddAsync(entity).ConfigureAwait(false);
+            await this.baseContext.SaveChangesAsync().ConfigureAwait(false);
+            return entity.Id;
         }
-
-        /// <inheritdoc />
-        public async Task<Guid> CreateEntityAsync<T>(T entity) where T : Entity
+        catch (Exception exception)
         {
-            try
+            throw new CreateException<T>(exception.Message, exception);
+        }
+    }
+
+    /// <inheritdoc />
+    public async Task DeleteEntityAsync<T>(Guid id) where T : Entity
+    {
+        try
+        {
+            T existingEntity = await this.GetEntityAsync<T>(id);
+            if (existingEntity == null)
             {
-                await this.baseContext.Set<T>().AddAsync(entity).ConfigureAwait(false);
-                await this.baseContext.SaveChangesAsync().ConfigureAwait(false);
-                return entity.Id;
-            } 
-            catch (Exception exception)
-            {
-                throw new CreateException<T>(exception.Message, exception);
+                throw new InvalidOperationException($"Unknown entity {id}");
             }
+            this.baseContext.Set<T>().Remove(existingEntity);
+            await this.baseContext.SaveChangesAsync().ConfigureAwait(false);
         }
-
-        /// <inheritdoc />
-        public async Task DeleteEntityAsync<T>(Guid id) where T : Entity
+        catch (Exception exception)
         {
-            try
+            throw new DeleteException<T>(exception.Message, exception);
+        }
+    }
+
+    /// <inheritdoc />
+    public async Task<IEnumerable<T>> GetEntitiesAsync<T>(Expression<Func<T, bool>> expression) where T : Entity
+    {
+        return await this.baseContext
+            .Set<T>()
+            .Where(expression)
+            .ToListAsync();
+    }
+
+    /// <inheritdoc />
+    public Task<T> GetEntityAsync<T>(Guid id) where T : Entity
+    {
+        return this.baseContext.Set<T>().SingleOrDefaultAsync(e => e.Id == id);
+    }
+
+    /// <inheritdoc />
+    public async Task<Guid> GetEntityIdAsync<T>(Expression<Func<T, bool>> expression) where T : Entity
+    {
+        return await this.baseContext.Set<T>()
+            .Where(expression)
+            .Select(e => e.Id)
+            .FirstOrDefaultAsync()
+            .ConfigureAwait(false);
+    }
+
+    /// <inheritdoc />
+    public async Task<Guid> UpdateEntityAsync<T>(T entity) where T : Entity
+    {
+        try
+        {
+            T existingEntity = await this.GetEntityAsync<T>(entity.Id);
+            if (existingEntity == null)
             {
-                T existingEntity = await this.GetEntityAsync<T>(id);
-                if (existingEntity == null)
-                {
-                    throw new InvalidOperationException($"Unknown entity {id}");
-                }
-                this.baseContext.Set<T>().Remove(existingEntity);
-                await this.baseContext.SaveChangesAsync().ConfigureAwait(false);
+                throw new InvalidOperationException($"Unknown entity {entity.Id}");
             }
-            catch (Exception exception)
-            {
-                throw new DeleteException<T>(exception.Message, exception);
-            }
+
+            this.baseContext.Entry<T>(existingEntity).CurrentValues.SetValues(entity);
+            await this.baseContext.SaveChangesAsync().ConfigureAwait(false);
+
+            return entity.Id;
         }
-
-        /// <inheritdoc />
-        public async Task<IEnumerable<T>> GetEntitiesAsync<T>(Expression<Func<T, bool>> expression) where T : Entity
+        catch (Exception exception)
         {
-            return await this.baseContext
-                .Set<T>()
-                .Where(expression)
-                .ToListAsync();
-        }
-
-        /// <inheritdoc />
-        public Task<T> GetEntityAsync<T>(Guid id) where T : Entity
-        {
-            return this.baseContext.Set<T>().SingleOrDefaultAsync(e => e.Id == id);
-        }
-
-        /// <inheritdoc />
-        public async Task<Guid> GetEntityIdAsync<T>(Expression<Func<T, bool>> expression) where T : Entity
-        {
-            return await this.baseContext.Set<T>()
-                .Where(expression)
-                .Select(e => e.Id)
-                .FirstOrDefaultAsync()
-                .ConfigureAwait(false);
-        }
-
-        /// <inheritdoc />
-        public async Task<Guid> UpdateEntityAsync<T>(T entity) where T : Entity
-        {
-            try
-            {
-                T existingEntity = await this.GetEntityAsync<T>(entity.Id);
-                if (existingEntity == null)
-                {
-                    throw new InvalidOperationException($"Unknown entity {entity.Id}");
-                }
-
-                this.baseContext.Entry<T>(existingEntity).CurrentValues.SetValues(entity);
-                await this.baseContext.SaveChangesAsync().ConfigureAwait(false);
-                
-                return entity.Id;
-            }
-            catch (Exception exception)
-            {
-                throw new UpdateException<T>(exception.Message, exception);
-            }
+            throw new UpdateException<T>(exception.Message, exception);
         }
     }
 }
