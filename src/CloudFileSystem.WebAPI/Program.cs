@@ -1,3 +1,5 @@
+using CloudFileSystem.Application;
+using CloudFileSystem.WebAPI.Middlewares;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,9 +11,15 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+#region adding custom services
+
+builder.Services.AddApplication();
+builder.Services.AddTransient<ExceptionHandlingMiddleware>();
+
+#endregion adding custom services
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -19,8 +27,13 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
+
+#region using custom middlewares
+
+app.UseMiddleware<ExceptionHandlingMiddleware>();
+
+#endregion using custom middlewares
 
 app.MapControllers();
 

@@ -1,6 +1,6 @@
 ﻿namespace CloudFileSystem.Application.Exceptions;
 
-public class MissingDocumentException : Exception
+public class MissingDocumentException : NotFoundException
 {
     public MissingDocumentException(Guid documentId)
         : base()
