@@ -5,6 +5,16 @@
 Built with .NET, this solution showcases a professional codebase using TDD in a Clean Architecture environment.
 The objective is to build a RESTful web API allowing users to manage files stored in both a database and Azure FileShare.
 
+The following use cases are available:
+
+-	Read Document Properties (to do)
+-	List Folder (to do)
+-	Upload New Document (to do)
+-	Upload New Document Version (to do)
+-	Delete Document (to do)
+-	Download Document (to do)
+-	Download Documents As Archive (to do)
+
 ## Prerequisites
 
 -	You need .NET 6.0 to run this code.

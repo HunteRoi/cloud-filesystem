@@ -11,6 +11,7 @@
     <PackageProjectUrl>https://github.com/hunteroi/cloud-filesystem</PackageProjectUrl>
     <Company />
     <Authors>HunteRoi</Authors>
+	<LangVersion>10</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>

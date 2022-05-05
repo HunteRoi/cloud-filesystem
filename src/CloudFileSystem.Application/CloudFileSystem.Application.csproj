@@ -4,10 +4,19 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+	<LangVersion>10</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\CloudFileSystem.Domain\CloudFileSystem.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="UseCases\ReadDocumentProperties\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="10.0.1" />
   </ItemGroup>
 
 </Project>

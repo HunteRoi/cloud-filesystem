@@ -11,23 +11,25 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTests", "UnitTests", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IntegrationTests", "IntegrationTests", "{D2EE141F-5360-411B-9E68-16A04A520A04}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudFileSystem.WebAPI", "src\CloudFileSystem.WebAPI\CloudFileSystem.WebAPI.csproj", "{FD9640A0-97A0-4F15-BC3E-29C3E41E1E72}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CloudFileSystem.WebAPI", "src\CloudFileSystem.WebAPI\CloudFileSystem.WebAPI.csproj", "{FD9640A0-97A0-4F15-BC3E-29C3E41E1E72}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudFileSystem.Application", "src\CloudFileSystem.Application\CloudFileSystem.Application.csproj", "{79145874-343B-4766-8B02-8417354305F8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CloudFileSystem.Application", "src\CloudFileSystem.Application\CloudFileSystem.Application.csproj", "{79145874-343B-4766-8B02-8417354305F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudFileSystem.Domain", "src\CloudFileSystem.Domain\CloudFileSystem.Domain.csproj", "{EEAC4750-DB95-4185-97D5-57D3BFCD8151}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CloudFileSystem.Domain", "src\CloudFileSystem.Domain\CloudFileSystem.Domain.csproj", "{EEAC4750-DB95-4185-97D5-57D3BFCD8151}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudFileSystem.Infrastructure", "src\CloudFileSystem.Infrastructure\CloudFileSystem.Infrastructure.csproj", "{3D09F1BB-E1D7-474F-B2DE-2713FF93C608}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CloudFileSystem.Infrastructure", "src\CloudFileSystem.Infrastructure\CloudFileSystem.Infrastructure.csproj", "{3D09F1BB-E1D7-474F-B2DE-2713FF93C608}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudFileSystem.WebAPI.UnitTests", "tests\UnitTests\CloudFileSystem.WebAPI.UnitTests\CloudFileSystem.WebAPI.UnitTests.csproj", "{4172878C-B289-449A-9F17-C27D8FABA858}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CloudFileSystem.WebAPI.UnitTests", "tests\UnitTests\CloudFileSystem.WebAPI.UnitTests\CloudFileSystem.WebAPI.UnitTests.csproj", "{4172878C-B289-449A-9F17-C27D8FABA858}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudFileSystem.Infrastructure.UnitTests", "tests\UnitTests\CloudFileSystem.Infrastructure.UnitTests\CloudFileSystem.Infrastructure.UnitTests.csproj", "{7753E788-F3E8-4BFF-BCA0-5DB67C224D61}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CloudFileSystem.Infrastructure.UnitTests", "tests\UnitTests\CloudFileSystem.Infrastructure.UnitTests\CloudFileSystem.Infrastructure.UnitTests.csproj", "{7753E788-F3E8-4BFF-BCA0-5DB67C224D61}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudFileSystem.Application.UnitTests", "tests\UnitTests\CloudFileSystem.Application.UnitTests\CloudFileSystem.Application.UnitTests.csproj", "{50075F03-8F13-4601-8AA0-33693DD1E48A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CloudFileSystem.Application.UnitTests", "tests\UnitTests\CloudFileSystem.Application.UnitTests\CloudFileSystem.Application.UnitTests.csproj", "{50075F03-8F13-4601-8AA0-33693DD1E48A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudFileSystem.Domain.UnitTests", "tests\UnitTests\CloudFileSystem.Domain.UnitTests\CloudFileSystem.Domain.UnitTests.csproj", "{C98A8C82-6490-4ED7-BC36-4FC49C764317}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CloudFileSystem.Domain.UnitTests", "tests\UnitTests\CloudFileSystem.Domain.UnitTests\CloudFileSystem.Domain.UnitTests.csproj", "{C98A8C82-6490-4ED7-BC36-4FC49C764317}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudFileSystem.Application.IntegrationTests", "tests\IntegrationTests\CloudFileSystem.Application.IntegrationTests\CloudFileSystem.Application.IntegrationTests.csproj", "{B537885A-BC81-4369-8C6C-E9D590E1829F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CloudFileSystem.Application.IntegrationTests", "tests\IntegrationTests\CloudFileSystem.Application.IntegrationTests\CloudFileSystem.Application.IntegrationTests.csproj", "{B537885A-BC81-4369-8C6C-E9D590E1829F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudFileSystem.Common", "tests\CloudFileSystem.Common.Tests\CloudFileSystem.Common.csproj", "{3742888C-283D-43EF-900A-F1CADE2EF8F5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -71,6 +73,10 @@ Global
 		{B537885A-BC81-4369-8C6C-E9D590E1829F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B537885A-BC81-4369-8C6C-E9D590E1829F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B537885A-BC81-4369-8C6C-E9D590E1829F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3742888C-283D-43EF-900A-F1CADE2EF8F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3742888C-283D-43EF-900A-F1CADE2EF8F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3742888C-283D-43EF-900A-F1CADE2EF8F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3742888C-283D-43EF-900A-F1CADE2EF8F5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -87,6 +93,7 @@ Global
 		{50075F03-8F13-4601-8AA0-33693DD1E48A} = {3033C278-4BD2-4542-B822-0E545BF66C26}
 		{C98A8C82-6490-4ED7-BC36-4FC49C764317} = {3033C278-4BD2-4542-B822-0E545BF66C26}
 		{B537885A-BC81-4369-8C6C-E9D590E1829F} = {D2EE141F-5360-411B-9E68-16A04A520A04}
+		{3742888C-283D-43EF-900A-F1CADE2EF8F5} = {036D4BE8-AFA4-4E45-A760-1D9305FB6C28}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CE0800D3-9B41-4551-9652-5B0B3F4C60C2}

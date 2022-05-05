@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
 
     <IsPackable>false</IsPackable>
+	<LangVersion>10</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -22,6 +23,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\src\CloudFileSystem.Application\CloudFileSystem.Application.csproj" />
     <ProjectReference Include="..\..\..\src\CloudFileSystem.Domain\CloudFileSystem.Domain.csproj" />
+    <ProjectReference Include="..\..\CloudFileSystem.Common.Tests\CloudFileSystem.Common.csproj" />
   </ItemGroup>
 
 </Project>

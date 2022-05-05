@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+	<LangVersion>10</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Common\Builders\" />
+    <Folder Include="Common\Data\" />
+    <Folder Include="Common\Setups\" />
+    <Folder Include="Common\Verifications\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoFixture" Version="4.17.0" />
+    <PackageReference Include="Moq" Version="4.17.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\CloudFileSystem.Application\CloudFileSystem.Application.csproj" />
+    <ProjectReference Include="..\..\src\CloudFileSystem.Domain\CloudFileSystem.Domain.csproj" />
+    <ProjectReference Include="..\..\src\CloudFileSystem.Infrastructure\CloudFileSystem.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>
