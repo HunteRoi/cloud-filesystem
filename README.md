@@ -1,6 +1,6 @@
 # Cloud FileSystem (.NET)
 
-[![CI](https://github.com/hunteroi/cloud-filesystem/actions/workflows/ci.yaml/badge.svg?branch=main)](https://github.com/hunteroi/cloud-filesystem/actions/workflows/ci.yaml)
+[![CI](https://github.com/HunteRoi/cloud-filesystem/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/HunteRoi/cloud-filesystem/actions/workflows/ci.yml)
 
 Built with .NET, this solution showcases a professional codebase using TDD in a Clean Architecture environment.
 The objective is to build a RESTful web API allowing users to manage files stored in both a database and Azure FileShare.
