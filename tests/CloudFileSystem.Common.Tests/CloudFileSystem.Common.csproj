@@ -8,10 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Common\Builders\" />
-    <Folder Include="Common\Data\" />
-    <Folder Include="Common\Setups\" />
-    <Folder Include="Common\Verifications\" />
+    <Folder Include="Data\" />
+    <Folder Include="Verifications\" />
   </ItemGroup>
 
   <ItemGroup>

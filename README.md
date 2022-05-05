@@ -7,7 +7,7 @@ The objective is to build a RESTful web API allowing users to manage files store
 
 The following use cases are available:
 
--	Read Document Properties (to do)
+-	Read Document Properties (pending)
 -	List Folder (to do)
 -	Upload New Document (to do)
 -	Upload New Document Version (to do)
