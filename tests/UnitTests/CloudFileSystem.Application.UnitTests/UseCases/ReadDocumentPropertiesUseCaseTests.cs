@@ -38,7 +38,7 @@ internal class ReadDocumentPropertiesUseCaseTests
         _documentRepository.HasRetrievedDocument(documentId);
         _mapper.HasBuiltResponse();
         actual.Should().BeOfType<ReadDocumentPropertiesResponse>()
-            .Which.Id.Should().Be(documentId);
+            .Which.DocumentId.Should().Be(documentId);
     }
 
     [Test]
