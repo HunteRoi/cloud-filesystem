@@ -1,11 +1,11 @@
 ﻿using AutoFixture;
 using AutoMapper;
 using CloudFileSystem.Application.Abstractions;
-using CloudFileSystem.Application.Exceptions;
 using CloudFileSystem.Application.UseCases.ReadDocumentProperties;
 using CloudFileSystem.Common.Builders.RequestBuilders;
 using CloudFileSystem.Common.Setups;
 using CloudFileSystem.Common.Verifications;
+using CloudFileSystem.Domain.Exceptions;
 using FluentAssertions;
 using Microsoft.Extensions.Logging;
 using Moq;
@@ -48,8 +48,8 @@ internal class ReadDocumentPropertiesUseCaseTests
 
         Func<Task> act = () => _useCase.Handle(request);
 
-        (await act.Should().ThrowAsync<MissingDocumentException>())
-            .Which.DocumentId.Should().Be(request.DocumentId);
+        (await act.Should().ThrowAsync<NotFoundException>())
+            .Which.Id.Should().Be(request.DocumentId);
     }
 
     [Test]

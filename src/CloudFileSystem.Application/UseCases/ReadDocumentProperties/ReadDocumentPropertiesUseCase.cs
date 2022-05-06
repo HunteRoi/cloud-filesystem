@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using CloudFileSystem.Application.Abstractions;
-using CloudFileSystem.Application.Exceptions;
+using CloudFileSystem.Domain.Exceptions;
 using Dawn;
 using Microsoft.Extensions.Logging;
 
@@ -24,7 +24,7 @@ public class ReadDocumentPropertiesUseCase : IUseCase<ReadDocumentPropertiesRequ
         var document = await _documentRepository.GetByDocumentId(request.DocumentId);
         if (document == null)
         {
-            throw new MissingDocumentException(request.DocumentId);
+            throw new NotFoundException(request.DocumentId);
         }
 
         return _mapper.Map<ReadDocumentPropertiesResponse>(document);

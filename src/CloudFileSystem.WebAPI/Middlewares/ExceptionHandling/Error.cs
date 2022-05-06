@@ -1,5 +1,4 @@
-﻿using CloudFileSystem.Application.Exceptions;
-using FluentValidation;
+﻿using CloudFileSystem.Domain.Exceptions;
 
 namespace CloudFileSystem.WebAPI.Middlewares.ExceptionHandling;
 

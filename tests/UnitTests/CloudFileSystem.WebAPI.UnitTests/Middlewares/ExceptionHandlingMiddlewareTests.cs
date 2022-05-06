@@ -1,12 +1,11 @@
 ﻿using AutoFixture;
 using AutoFixture.Kernel;
-using CloudFileSystem.Application.Exceptions;
 using CloudFileSystem.Domain.Abstractions;
+using CloudFileSystem.Domain.Exceptions;
 using CloudFileSystem.WebAPI.Middlewares.ExceptionHandling;
 using CloudFileSystem.WebAPI.UnitTests.Common.Setups;
 using CloudFileSystem.WebAPI.UnitTests.Common.Verifications;
 using FluentAssertions;
-using FluentValidation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Moq;

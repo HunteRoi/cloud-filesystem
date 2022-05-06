@@ -1,4 +1,4 @@
-﻿namespace CloudFileSystem.Application.Exceptions;
+﻿namespace CloudFileSystem.Domain.Exceptions;
 
 public class BadRequestException : ApplicationException
 {

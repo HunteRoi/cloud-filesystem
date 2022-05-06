@@ -25,10 +25,16 @@ public sealed class ValidationBehavior<TRequest, TResponse> : IPipelineBehavior<
         var errors = _validators
             .Select(x => x.Validate(context))
             .SelectMany(x => x.Errors)
-            .Where(x => x != null);
+            .Where(x => x != null)
+            .GroupBy(x => x.PropertyName, x => x.ErrorMessage, (propertyName, errorMessages) => new
+            {
+                Key = propertyName,
+                Values = errorMessages.Distinct().ToArray()
+            })
+            .ToDictionary(x => x.Key, x => x.Values);
         if (errors.Any())
         {
-            throw new ValidationException(errors);
+            throw new Domain.Exceptions.ValidationException(errors);
         }
 
         return await next();
