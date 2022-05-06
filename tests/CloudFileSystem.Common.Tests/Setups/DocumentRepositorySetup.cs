@@ -16,9 +16,4 @@ public static class DocumentRepositorySetup
             .ReturnsAsync(document)
             .Verifiable();
     }
-
-    public static void HasRetrievedDocument(this Mock<IDocumentRepository> repository, Guid documentId)
-    {
-        repository.Verify(repo => repo.GetByDocumentId(documentId), Times.Once);
-    }
 }

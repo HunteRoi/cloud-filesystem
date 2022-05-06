@@ -1,5 +1,5 @@
 using CloudFileSystem.Application;
-using CloudFileSystem.WebAPI.Middlewares;
+using CloudFileSystem.WebAPI.Middlewares.ExceptionHandling;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);

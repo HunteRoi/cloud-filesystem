@@ -5,6 +5,7 @@ using CloudFileSystem.Application.Exceptions;
 using CloudFileSystem.Application.UseCases.ReadDocumentProperties;
 using CloudFileSystem.Common.Builders.RequestBuilders;
 using CloudFileSystem.Common.Setups;
+using CloudFileSystem.Common.Verifications;
 using FluentAssertions;
 using Microsoft.Extensions.Logging;
 using Moq;
@@ -77,15 +78,5 @@ internal class ReadDocumentPropertiesUseCaseTests
         _logger = new Mock<ILogger<ReadDocumentPropertiesUseCase>>();
         _mapper = new Mock<IMapper>();
         _useCase = new ReadDocumentPropertiesUseCase(_logger.Object, _documentRepository.Object, _mapper.Object); ;
-    }
-
-    [TearDown]
-    public void TearDown()
-    {
-        _fixture = null;
-        _documentRepository = null;
-        _logger = null;
-        _mapper = null;
-        _useCase = null;
     }
 }
