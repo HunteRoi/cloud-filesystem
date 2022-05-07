@@ -4,7 +4,7 @@ using System.IO;
 
 namespace CloudFileSystem.WebAPI.UnitTests.Common.Verifications;
 
-internal static class HttpResponseVerification
+internal static class HttpResponseVerifications
 {
     public static void ShouldTransport(this HttpResponse response, string json, int statusCode)
     {
