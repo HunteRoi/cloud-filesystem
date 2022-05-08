@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using System;
 
-namespace CloudFileSystem.Application.UnitTests.Behaviours.Validation;
+namespace CloudFileSystem.Application.UnitTests.Behaviours;
 
 internal class FakeRequest : IRequest<FakeResponse>
 {

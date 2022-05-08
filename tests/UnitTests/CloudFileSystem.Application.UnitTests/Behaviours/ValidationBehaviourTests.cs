@@ -7,10 +7,20 @@ using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 
-namespace CloudFileSystem.Application.UnitTests.Behaviours.Validation;
+namespace CloudFileSystem.Application.UnitTests.Behaviours;
 
 internal class ValidationBehaviourTests
 {
+    private IEnumerable<IValidator<FakeRequest>> _validators;
+    private ValidationBehaviour<FakeRequest, FakeResponse> _behaviour;
+
+    [SetUp]
+    public void SetUp()
+    {
+        _validators = new List<IValidator<FakeRequest>> { new FakeRequestValidator() };
+        _behaviour = new ValidationBehaviour<FakeRequest, FakeResponse>(_validators);
+    }
+
     [Test]
     public void ValidationBehaviour_Should_ThrowArgumentNullException_When_ListOfValidatorsIsNull()
     {
@@ -18,47 +28,42 @@ internal class ValidationBehaviourTests
     }
 
     [Test]
-    public void ValidationBehaviour_Should_ThrowValidationException_When_RequestHasEmptyId()
+    public void Handle_Should_ThrowValidationException_When_RequestHasEmptyId()
     {
         var request = new FakeRequest();
-        IEnumerable<IValidator<FakeRequest>> validators = new List<IValidator<FakeRequest>> { new FakeRequestValidator() };
-        var behaviour = new ValidationBehaviour<FakeRequest, FakeResponse>(validators);
         var expectedErrors = new Dictionary<string, string[]>()
         {
             { "Id", new[] { "'Id' must not be empty." } }
         };
 
-        var exception = Assert.ThrowsAsync<Domain.Exceptions.ValidationException>(() => behaviour.Handle(request, default, () => null));
+        var exception = Assert.ThrowsAsync<Domain.Exceptions.ValidationException>(() => _behaviour.Handle(request, default, () => null));
         exception.Errors.Should().BeEquivalentTo(expectedErrors);
     }
 
     [Test]
-    public void ValidationBehaviour_Should_CallRequestHandler_When_RequestHasNoValidators()
+    public void Handle_Should_CallRequestHandler_When_RequestHasNoValidators()
     {
         var request = new FakeRequest();
         var response = new FakeResponse(request.Id);
-        IEnumerable<IValidator<FakeRequest>> validators = new List<IValidator<FakeRequest>>();
-        var behaviour = new ValidationBehaviour<FakeRequest, FakeResponse>(validators);
+        _validators = new List<IValidator<FakeRequest>>();
         Mock<RequestHandlerDelegate<FakeResponse>> act = new();
         act.Setup(callback => callback.Invoke()).ReturnsAsync(response).Verifiable();
 
-        Assert.DoesNotThrowAsync(() => behaviour.Handle(request, default, act.Object));
+        Assert.DoesNotThrowAsync(() => _behaviour.Handle(request, default, act.Object));
         act.Verify(callback => callback.Invoke(), Times.Once);
-        validators.Should().BeEmpty();
+        _validators.Should().BeEmpty();
     }
 
     [Test]
-    public void ValidationBehaviour_Should_CallRequestHandler_When_RequestPassedValidators()
+    public void Handle_Should_CallRequestHandler_When_RequestPassedValidators()
     {
         var request = new FakeRequest(Guid.NewGuid());
         var response = new FakeResponse(request.Id);
-        IEnumerable<IValidator<FakeRequest>> validators = new List<IValidator<FakeRequest>> { new FakeRequestValidator() };
-        var behaviour = new ValidationBehaviour<FakeRequest, FakeResponse>(validators);
         Mock<RequestHandlerDelegate<FakeResponse>> act = new();
         act.Setup(callback => callback.Invoke()).ReturnsAsync(response).Verifiable();
 
-        Assert.DoesNotThrowAsync(() => behaviour.Handle(request, default, act.Object));
+        Assert.DoesNotThrowAsync(() => _behaviour.Handle(request, default, act.Object));
         act.Verify(callback => callback.Invoke(), Times.Once);
-        validators.Should().NotBeEmpty();
+        _validators.Should().NotBeEmpty();
     }
 }

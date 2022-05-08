@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace CloudFileSystem.Application.UnitTests.Behaviours.Validation;
+namespace CloudFileSystem.Application.UnitTests.Behaviours;
 
 internal class FakeRequestValidator : AbstractValidator<FakeRequest>
 {
