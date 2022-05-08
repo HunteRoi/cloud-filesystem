@@ -46,6 +46,7 @@ internal class ValidationBehaviourTests
         var request = new FakeRequest();
         var response = new FakeResponse(request.Id);
         _validators = new List<IValidator<FakeRequest>>();
+        _behaviour = new ValidationBehaviour<FakeRequest, FakeResponse>(_validators);
         Mock<RequestHandlerDelegate<FakeResponse>> act = new();
         act.Setup(callback => callback.Invoke()).ReturnsAsync(response).Verifiable();
 
