@@ -1,5 +1,4 @@
 ﻿using AutoFixture;
-using CloudFileSystem.Domain.Exceptions;
 using CloudFileSystem.WebAPI.Controllers.V1;
 using CloudFileSystem.WebAPI.UnitTests.Common.Setups;
 using CloudFileSystem.WebAPI.UnitTests.Common.Verifications;
@@ -33,16 +32,6 @@ internal class DocumentsControllerTests
     public void DocumentsController_Should_ThrowArgumentNullExcption_When_MediatorIsNul()
     {
         Assert.Throws<ArgumentNullException>(() => new DocumentsController(null));
-    }
-
-    [Test]
-    public void ReadDocumentProperties_Should_ThrowNotFoundException_When_DocumentDoesNotExist()
-    {
-        var documentId = _fixture.Create<Guid>();
-        _mediator.ReturnsNullForDocument(documentId);
-
-        Assert.ThrowsAsync<NotFoundException>(() => _controller.ReadDocumentProperties(documentId));
-        _mediator.ReturnedNullForDocument(documentId);
     }
 
     [Test]

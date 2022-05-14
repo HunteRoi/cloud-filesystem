@@ -1,5 +1,4 @@
 ﻿using CloudFileSystem.Application.UseCases.ReadDocumentProperties;
-using CloudFileSystem.Domain.Exceptions;
 using Dawn;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -23,11 +22,6 @@ public class DocumentsController : ControllerBase
     {
         var request = new ReadDocumentPropertiesRequest(id);
         var response = await _mediator.Send(request);
-        if (response == null)
-        {
-            throw new NotFoundException(id.Value);
-        }
-
         return Ok(response);
     }
 }
