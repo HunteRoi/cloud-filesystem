@@ -2,12 +2,12 @@
 
 namespace CloudFileSystem.Application.UseCases.ReadDocumentProperties;
 
-internal class ReadDocumentPropertiesRequestValidator : AbstractValidator<ReadDocumentPropertiesRequest>
+public class ReadDocumentPropertiesRequestValidator : AbstractValidator<ReadDocumentPropertiesRequest>
 {
     public ReadDocumentPropertiesRequestValidator()
     {
-        DocumentIdIsNotDefault();
+        DocumentIdIsNotNullEmptyOrDefault();
     }
 
-    private void DocumentIdIsNotDefault() => RuleFor(request => request.DocumentId).NotEmpty();
+    private void DocumentIdIsNotNullEmptyOrDefault() => RuleFor(request => request.Id).NotNull().NotEmpty().NotEqual(Guid.Empty);
 }

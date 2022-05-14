@@ -21,7 +21,7 @@ public class DocumentBuilder
     {
         return new Document()
         {
-            DocumentId = _documentId
+            Id = _documentId
         };
     }
 

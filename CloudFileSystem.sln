@@ -29,7 +29,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CloudFileSystem.Domain.Unit
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CloudFileSystem.Application.IntegrationTests", "tests\IntegrationTests\CloudFileSystem.Application.IntegrationTests\CloudFileSystem.Application.IntegrationTests.csproj", "{B537885A-BC81-4369-8C6C-E9D590E1829F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudFileSystem.Common", "tests\CloudFileSystem.Common.Tests\CloudFileSystem.Common.csproj", "{3742888C-283D-43EF-900A-F1CADE2EF8F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CloudFileSystem.Common", "tests\CloudFileSystem.Common.Tests\CloudFileSystem.Common.csproj", "{3742888C-283D-43EF-900A-F1CADE2EF8F5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudFileSystem.Infrastructure.IntegrationTests", "tests\IntegrationTests\CloudFileSystem.Infrastructure.IntegrationTests\CloudFileSystem.Infrastructure.IntegrationTests.csproj", "{1290CAC9-5253-4449-8E81-471BFFA5A1E5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -77,6 +79,10 @@ Global
 		{3742888C-283D-43EF-900A-F1CADE2EF8F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3742888C-283D-43EF-900A-F1CADE2EF8F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3742888C-283D-43EF-900A-F1CADE2EF8F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1290CAC9-5253-4449-8E81-471BFFA5A1E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1290CAC9-5253-4449-8E81-471BFFA5A1E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1290CAC9-5253-4449-8E81-471BFFA5A1E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1290CAC9-5253-4449-8E81-471BFFA5A1E5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -94,6 +100,7 @@ Global
 		{C98A8C82-6490-4ED7-BC36-4FC49C764317} = {3033C278-4BD2-4542-B822-0E545BF66C26}
 		{B537885A-BC81-4369-8C6C-E9D590E1829F} = {D2EE141F-5360-411B-9E68-16A04A520A04}
 		{3742888C-283D-43EF-900A-F1CADE2EF8F5} = {036D4BE8-AFA4-4E45-A760-1D9305FB6C28}
+		{1290CAC9-5253-4449-8E81-471BFFA5A1E5} = {D2EE141F-5360-411B-9E68-16A04A520A04}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CE0800D3-9B41-4551-9652-5B0B3F4C60C2}

@@ -36,19 +36,6 @@ internal class DocumentsControllerTests
     }
 
     [Test]
-    public void ReadDocumentProperties_Should_ThrowArgumentNullException_When_DocumentIdIsNul()
-    {
-        Assert.ThrowsAsync<ArgumentNullException>(() => _controller.ReadDocumentProperties(null));
-    }
-
-    [Test]
-    public void ReadDocumentProperties_Should_ThrowArgumentException_When_DocumentIdIsEmptyGuid()
-    {
-        var documentId = Guid.Empty;
-        Assert.ThrowsAsync<ArgumentException>(() => _controller.ReadDocumentProperties(documentId));
-    }
-
-    [Test]
     public void ReadDocumentProperties_Should_ThrowNotFoundException_When_DocumentDoesNotExist()
     {
         var documentId = _fixture.Create<Guid>();

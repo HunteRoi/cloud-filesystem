@@ -2,4 +2,4 @@
 
 namespace CloudFileSystem.Application.UseCases.ReadDocumentProperties;
 
-public sealed record ReadDocumentPropertiesRequest(Guid DocumentId) : IRequest<ReadDocumentPropertiesResponse>;
+public sealed record ReadDocumentPropertiesRequest(Guid? Id) : IRequest<ReadDocumentPropertiesResponse>;

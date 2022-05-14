@@ -1,6 +1,5 @@
 ﻿namespace CloudFileSystem.Domain.Entities;
 
-public class Document
+public class Document : Entity
 {
-    public Guid DocumentId { get; init; }
 }

@@ -18,16 +18,14 @@ public class DocumentsController : ControllerBase
         _mediator = Guard.Argument(mediator, nameof(mediator)).NotNull().Value;
     }
 
-    [HttpGet("{documentId}")]
-    public async Task<IActionResult> ReadDocumentProperties(Guid? documentId)
+    [HttpGet("{id}")]
+    public async Task<IActionResult> ReadDocumentProperties(Guid? id)
     {
-        Guard.Argument(documentId, nameof(documentId)).NotNull().NotEqual(Guid.Empty);
-
-        var request = new ReadDocumentPropertiesRequest(documentId.Value);
+        var request = new ReadDocumentPropertiesRequest(id);
         var response = await _mediator.Send(request);
         if (response == null)
         {
-            throw new NotFoundException(documentId.Value);
+            throw new NotFoundException(id.Value);
         }
 
         return Ok(response);

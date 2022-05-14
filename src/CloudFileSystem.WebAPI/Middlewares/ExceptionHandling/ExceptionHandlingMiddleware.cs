@@ -22,7 +22,10 @@ public sealed class ExceptionHandlingMiddleware : IMiddleware
         httpContext.Response.StatusCode = error.StatusCode;
         var json = _exceptionSerializer.SerializeException(exception);
 
+        httpContext.Response.ContentType = "application/json";
+        httpContext.Response.ContentLength = json.Length;
         await httpContext.Response.WriteAsync(json);
+        await httpContext.Response.Body.FlushAsync();
     }
 
     public async Task InvokeAsync(HttpContext context, RequestDelegate next)
